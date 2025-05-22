@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Hewan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #333;
+            background: white;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 700px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #00509e;
+        }
+
+        .info-box {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            margin: 20px 0;
+            font-size: 18px;
+            line-height: 1.6;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .info-box h2 {
+            color: #333;
+        }
+
+        .info-box .col {
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .info-box .col img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #00509e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #7e0000;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Belajar Tentang Hewan</h1>
+        
+        <!-- Dropdown untuk memilih hewan -->
+        <label for="animal-select">Pilih Hewan:</label>
+        <select id="animal-select">
+            <option value="0">Singa</option>
+            <option value="1">Gajah</option>
+            <option value="2">Penguin</option>
+            <option value="3">Macan</option>
+        </select>
+
+        <!-- Kolom informasi tentang hewan -->
+        <div id="animal-info" class="info-box">
+            <!-- Kolom informasi akan muncul di sini -->
+        </div>
+
+        <button id="show-info-btn">Tampilkan Informasi</button>
+    </div>
+
+    <script>
+        // Data tentang hewan
+        const animalData = [
+            {
+                name: "Singa",
+                description: "Singa dikenal sebagai raja hutan. Hewan ini adalah kucing besar dengan tubuh berotot dan bulu keemasan.",
+                image: "singa.webp"
+            },
+            {
+                name: "Gajah",
+                description: "Gajah adalah hewan darat terbesar di dunia, terkenal karena kecerdasan dan ingatannya yang tajam.",
+                image: "gajah.webp"
+            },
+            {
+                name: "Penguin",
+                description: "Penguin adalah burung yang tidak bisa terbang dan hidup terutama di belahan bumi selatan. Mereka adalah perenang yang hebat.",
+                image: "pinguin.jpg"
+            },
+            {
+                name: "Macan",
+                description:"macan galak",
+                image : "macan.jpg"
+            }
+        ];
+
+        const animalSelect = document.getElementById("animal-select");
+        const showInfoBtn = document.getElementById("show-info-btn");
+        const animalInfo = document.getElementById("animal-info");
+
+        // Fungsi untuk menampilkan informasi hewan
+        function displayAnimalInfo() {
+            const selectedAnimalIndex = animalSelect.value;
+            const animal = animalData[selectedAnimalIndex];
+
+            animalInfo.innerHTML = `
+                <div class="col">
+                    <img src="${animal.image}" alt="${animal.name}">
+                </div>
+                <div class="col">
+                    <h2>${animal.name}</h2>
+                    <p>${animal.description}</p>
+                </div>
+            `;
+        }
+
+        // Menambahkan event listener ke tombol
+        showInfoBtn.addEventListener("click", displayAnimalInfo);
+    </script>
+</body>
+</html>
